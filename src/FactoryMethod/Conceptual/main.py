@@ -10,6 +10,32 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 
+class Product(ABC):
+    """
+    The Product interface declares the operations that all concrete products
+    must implement.
+    """
+
+    @abstractmethod
+    def operation(self) -> str:
+        pass
+
+
+"""
+Concrete Products provide various implementations of the Product interface.
+"""
+
+
+class ConcreteProduct1(Product):
+    def operation(self) -> str:
+        return "{Result of the ConcreteProduct1}"
+
+
+class ConcreteProduct2(Product):
+    def operation(self) -> str:
+        return "{Result of the ConcreteProduct2}"
+
+
 class Creator(ABC):
     """
     The Creator class declares the factory method that is supposed to return
@@ -64,32 +90,6 @@ class ConcreteCreator1(Creator):
 class ConcreteCreator2(Creator):
     def factory_method(self) -> Product:
         return ConcreteProduct2()
-
-
-class Product(ABC):
-    """
-    The Product interface declares the operations that all concrete products
-    must implement.
-    """
-
-    @abstractmethod
-    def operation(self) -> str:
-        pass
-
-
-"""
-Concrete Products provide various implementations of the Product interface.
-"""
-
-
-class ConcreteProduct1(Product):
-    def operation(self) -> str:
-        return "{Result of the ConcreteProduct1}"
-
-
-class ConcreteProduct2(Product):
-    def operation(self) -> str:
-        return "{Result of the ConcreteProduct2}"
 
 
 def client_code(creator: Creator) -> None:
